@@ -13,7 +13,7 @@ Use Windows x64, Visual Studio 2022 with Desktop development with C++, CMake, Gi
 ```powershell
 cmake -S . -B build -G "Visual Studio 17 2022" -A x64 -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
 cmake --build build --config Release --parallel 2
-cmake --install build --config Release --prefix package
+cmake --install build --config Release --prefix package --component Mod
 ```
 
 GitHub Actions builds pushes to main, pull requests and version tags. Version tags also publish a release ZIP. The static MSVC runtime avoids a separate Visual C++ runtime dependency for this DLL. The upstream project and fork are GPL-3.0; see LICENSE.
