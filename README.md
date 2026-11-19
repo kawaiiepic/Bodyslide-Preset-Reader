@@ -8,10 +8,10 @@ Install the original Nexus mod first (it supplies the compiled `Scripts/Bodyslid
 
 ## Build
 
-Use Windows x64, Visual Studio 2022 with Desktop development with C++, CMake, Git and vcpkg. From PowerShell, with VCPKG_ROOT set to your vcpkg directory:
+Use Windows x64, Visual Studio with Desktop development with C++, Ninja, CMake, Git and vcpkg. From an x64 Developer PowerShell for Visual Studio, with VCPKG_ROOT set to your vcpkg directory:
 
 ```powershell
-cmake -S . -B build -G "Visual Studio 17 2022" -A x64 -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=cl -DCMAKE_C_COMPILER=cl -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
 cmake --build build --config Release --parallel 2
 cmake --install build --config Release --prefix package --component Mod
 ```
